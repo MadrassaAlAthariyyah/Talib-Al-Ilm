@@ -343,16 +343,16 @@
     /* ── FEE ── */
     #fee { background: var(--bg3); }
     .fee-box {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
       margin-top: 2.5rem;
     }
     .fee-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 4px;
-      padding: 2.5rem 3rem;
+      padding: 2rem 2rem;
       text-align: center;
-      flex: 1 1 200px; max-width: 260px;
+      flex: 1 1 180px; max-width: 230px;
     }
     .fee-card.highlight {
       border-color: var(--gold);
@@ -758,9 +758,23 @@
       <div class="fee-card highlight">
         <i class="fas fa-tag"></i>
         <div class="fee-amount">₹3000</div>
-        <div class="fee-label">FULL YEAR · ONE-TIME</div>
+        <div class="fee-label">INDIAN RUPEES · FOR THE WHOLE YEAR</div>
         <br/>
-        <small style="color:var(--text-muted);font-size:0.82rem">Affordable &amp; accessible for all</small>
+        <small style="color:var(--text-muted);font-size:0.82rem">*Installment plan available</small>
+      </div>
+      <div class="fee-card highlight">
+        <i class="fas fa-tag"></i>
+        <div class="fee-amount">$50</div>
+        <div class="fee-label">US DOLLARS · FOR THE WHOLE YEAR</div>
+        <br/>
+        <small style="color:var(--text-muted);font-size:0.82rem">&nbsp;</small>
+      </div>
+      <div class="fee-card highlight">
+        <i class="fas fa-tag"></i>
+        <div class="fee-amount">₨9000</div>
+        <div class="fee-label">PAKISTANI RUPEES · FOR THE WHOLE YEAR</div>
+        <br/>
+        <small style="color:var(--text-muted);font-size:0.82rem">*Installment plan available</small>
       </div>
       <div class="fee-card">
         <i class="fas fa-users"></i>
