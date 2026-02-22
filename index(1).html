@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Talib-ul-Ilm | Foundation Course in Islamic Knowledge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg:        #0d1a13;
+      --bg2:       #111e16;
+      --bg3:       #162010;
+      --card:      #152019;
+      --border:    #2a3d2c;
+      --gold:      #c9a84c;
+      --gold-lt:   #e8c97a;
+      --green:     #2e6b45;
+      --green-lt:  #3a8857;
+      --text:      #e8e2d5;
+      --text-muted:#9aab9a;
+      --accent:    #c9a84c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 999;
+      background: rgba(13,26,19,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex; gap: 1.5rem; list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--gold); font-size: 1.4rem; }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 1rem;
+      padding: 1rem 2rem 1.5rem;
+      background: rgba(13,26,19,0.98);
+      border-bottom: 1px solid var(--border);
+      position: fixed; top: 56px; left: 0; width: 100%; z-index: 998;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+
+    /* ── HERO ── */
+    header {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(46,107,69,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(201,168,76,0.07) 0%, transparent 60%),
+        linear-gradient(160deg, #0a1510 0%, #0d1a13 50%, #091208 100%);
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M30 0l7.5 15H60L45 24.5l5.5 15.5L30 31l-20.5 9 5.5-15.5L0 15h22.5z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    header > * { position: relative; z-index: 1; }
+
+    .arabic-header {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--gold);
+      opacity: 0.85;
+      margin-bottom: 1rem;
+      direction: rtl;
+      animation: fadeDown 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 7vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      background: linear-gradient(135deg, var(--gold-lt) 0%, var(--gold) 50%, #a07830 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1.1;
+      animation: fadeDown 0.9s ease 0.1s both;
+    }
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 1.25rem auto 0;
+      animation: fadeDown 1s ease 0.2s both;
+    }
+    .hero-divider {
+      width: 80px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.8rem auto;
+      animation: fadeIn 1.2s ease 0.3s both;
+    }
+    .hero-tagline {
+      font-style: italic;
+      color: var(--text);
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.85;
+      animation: fadeIn 1.2s ease 0.4s both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: linear-gradient(135deg, var(--green), var(--green-lt));
+      color: #fff;
+      padding: 0.9rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 20px rgba(46,107,69,0.4);
+      transition: all 0.3s;
+      animation: fadeIn 1.2s ease 0.5s both;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(46,107,69,0.6);
+      background: linear-gradient(135deg, var(--green-lt), var(--green));
+    }
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: var(--gold); opacity: 0.5; font-size: 1.2rem;
+      animation: bounce 2s infinite;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 1.5rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::before, .section-label::after {
+      content: ''; flex: 0 0 30px; height: 1px; background: var(--gold); opacity: 0.4;
+    }
+    .section-label.center { justify-content: center; }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    h2.center, .section-label.center { text-align: center; }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 640px;
+    }
+    .section-desc.center { text-align: center; margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 3rem;
+      align-items: center;
+      border-left: 2px solid var(--gold);
+      padding-left: 2.5rem;
+    }
+    .about-icon {
+      font-size: 3.5rem;
+      color: var(--gold);
+      opacity: 0.7;
+      text-align: center;
+    }
+    .about-text { font-size: 1.05rem; color: var(--text); line-height: 1.9; }
+    .about-text strong { color: var(--gold); }
+
+    /* ── COURSE STRUCTURE ── */
+    #structure { background: var(--bg3); }
+    .structure-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .struct-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .struct-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+    .struct-card i { font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
+    .struct-card h3 { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.5rem; }
+    .struct-card p { font-size: 0.95rem; color: var(--text); }
+
+    /* ── SYLLABUS ── */
+    #syllabus { background: var(--bg2); }
+    .syllabus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .syllabus-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: border-color 0.3s;
+    }
+    .syllabus-card:hover { border-color: var(--gold); }
+    .syl-icon {
+      width: 40px; height: 40px; min-width: 40px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1rem;
+    }
+    .syl-subject { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.25rem; }
+    .syl-book { font-size: 0.92rem; color: var(--text); }
+
+    /* ── INSTRUCTORS ── */
+    #instructors { background: var(--bg3); }
+    .instructor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .instructor-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .instructor-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--green-lt));
+    }
+    .instructor-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.5); }
+    .instructor-avatar {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--green), var(--gold));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .instructor-name { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); margin-bottom: 0.3rem; }
+    .instructor-role { font-size: 0.78rem; color: var(--text-muted); font-style: italic; margin-bottom: 0.75rem; letter-spacing: 0.03em; }
+    .instructor-bio { list-style: none; }
+    .instructor-bio li {
+      font-size: 0.88rem; color: var(--text-muted);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .instructor-bio li i { color: var(--gold); margin-top: 0.25rem; font-size: 0.75rem; }
+
+    /* ── CERTIFICATION ── */
+    #cert { background: var(--bg2); }
+    .cert-box {
+      background: var(--card);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      padding: 2.5rem;
+      max-width: 600px;
+      margin: 2.5rem auto 0;
+      text-align: center;
+      position: relative;
+    }
+    .cert-box::before, .cert-box::after {
+      content: '✦'; position: absolute;
+      color: var(--gold); opacity: 0.4; font-size: 1.2rem;
+    }
+    .cert-box::before { top: 1rem; left: 1rem; }
+    .cert-box::after { bottom: 1rem; right: 1rem; }
+    .cert-box i { font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; display: block; }
+    .cert-box h3 { font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 0.75rem; }
+    .cert-box p { color: var(--text-muted); font-size: 0.95rem; }
+    .cert-box .badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-size: 0.8rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+    }
+
+    /* ── FEE ── */
+    #fee { background: var(--bg3); }
+    .fee-box {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .fee-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem 3rem;
+      text-align: center;
+      flex: 1 1 200px; max-width: 260px;
+    }
+    .fee-card.highlight {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, rgba(201,168,76,0.08), var(--card));
+    }
+    .fee-card i { font-size: 2rem; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+    .fee-amount { font-family: 'Cinzel', serif; font-size: 2.8rem; color: var(--gold); }
+    .fee-label { font-size: 0.82rem; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 0.25rem; }
+    .seats-num { font-family: 'Cinzel', serif; font-size: 2.8rem; color: #e05c5c; }
+    .limited-badge {
+      display: inline-block;
+      background: rgba(224,92,92,0.15);
+      border: 1px solid rgba(224,92,92,0.4);
+      color: #e05c5c;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      margin-top: 0.5rem;
+    }
+
+    /* ── DATES ── */
+    #dates { background: var(--bg2); }
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .date-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .date-card i { font-size: 1.8rem; color: var(--gold); margin-bottom: 0.75rem; display: block; }
+    .date-card h3 { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .date-val { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold); }
+
+    /* ── WHY ── */
+    #why { background: var(--bg3); }
+    .why-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .why-list li {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      display: flex; gap: 1rem; align-items: center;
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: border-color 0.3s;
+    }
+    .why-list li:hover { border-color: var(--green-lt); }
+    .why-list li i { color: var(--green-lt); font-size: 1.1rem; flex-shrink: 0; }
+
+    /* ── CTA ── */
+    #cta {
+      background: linear-gradient(135deg, #0a1a0f 0%, #111e16 50%, #0d1a13 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-alert {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: rgba(224,92,92,0.1);
+      border: 1px solid rgba(224,92,92,0.3);
+      border-radius: 4px;
+      padding: 0.75rem 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: #e05c5c;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+    .cta-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .cta-title span { color: var(--gold); }
+    .cta-subtitle { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg2); }
+    .contact-inner {
+      display: flex; flex-wrap: wrap; gap: 3rem;
+      margin-top: 2.5rem;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-btns {
+      display: flex; flex-direction: column; gap: 1rem; min-width: 220px;
+    }
+    .btn-contact {
+      display: flex; align-items: center; gap: 0.8rem;
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+    .btn-wa {
+      background: rgba(37,211,102,0.12);
+      border-color: rgba(37,211,102,0.3);
+      color: #25d366;
+    }
+    .btn-wa:hover { background: rgba(37,211,102,0.2); transform: translateX(4px); }
+    .btn-telegram {
+      background: rgba(36,161,222,0.12);
+      border-color: rgba(36,161,222,0.35);
+      color: #29a9e0;
+    }
+    .btn-telegram:hover { background: rgba(36,161,222,0.22); transform: translateX(4px); }
+    .qr-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .qr-box img { border-radius: 4px; width: 160px; height: 160px; background: #fff; padding: 8px; }
+    .qr-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; letter-spacing: 0.05em; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080f0b;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .footer-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.2em; }
+    .footer-text { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .footer-divider { width: 40px; height: 1px; background: var(--gold); opacity: 0.3; margin: 1rem auto; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .about-inner {
+        grid-template-columns: 1fr;
+        border-left: none;
+        border-top: 2px solid var(--gold);
+        padding-left: 0; padding-top: 1.5rem;
+      }
+      .about-icon { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">TALIB-UL-ILM</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#syllabus">Syllabus</a></li>
+    <li><a href="#instructors">Instructors</a></li>
+    <li><a href="#fee">Fee</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><i class="fas fa-bars"></i></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#syllabus" onclick="toggleMenu()">Syllabus</a>
+  <a href="#instructors" onclick="toggleMenu()">Instructors</a>
+  <a href="#fee" onclick="toggleMenu()">Fee &amp; Seats</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<header id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+
+  <p class="arabic-header">طَالِبُ الْعِلْم</p>
+  <h1 class="hero-title">TALIB-UL-ILM</h1>
+  <p class="hero-subtitle">A One-Year Foundation Course in Authentic Islamic Knowledge</p>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">"Not just a course — an identity, a commitment, a journey toward being a true student of knowledge."</p>
+  <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank">
+    <i class="fab fa-whatsapp"></i> Register Now
+  </a>
+
+  <span class="scroll-hint"><i class="fas fa-chevron-down"></i></span>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label"><span>About the Course</span></p>
+    <h2>A Journey Built on Authentic Foundations</h2>
+    <br/>
+    <div class="about-inner">
+      <div class="about-icon">
+        <i class="fas fa-book-open"></i>
+      </div>
+      <p class="about-text">
+        A <strong>structured and serious foundation program</strong> for those who want to build their Deen upon authentic sources and the <strong>Manhaj of the Salaf (Ahlul Hadith)</strong> — free from confusion and shortcuts.<br/><br/>
+        Open to <strong>students, professionals, homemakers</strong> — <em>all ages &amp; genders</em> are welcome. Whether you are beginning your journey or looking to solidify your foundations, this course is designed to bring you clarity, depth, and purpose.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section id="structure">
+  <div class="container">
+    <p class="section-label center"><span>Course Structure</span></p>
+    <h2 class="center">How the Program Works</h2>
+    <div class="structure-grid">
+      <div class="struct-card">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Duration</h3>
+        <p>1 Full Year</p>
+      </div>
+      <div class="struct-card">
+        <i class="fas fa-clock"></i>
+        <h3>Schedule</h3>
+        <p>4 Days/Week<br/>~1 Hour per Class</p>
+      </div>
+      <div class="struct-card">
+        <i class="fas fa-video"></i>
+        <h3>Mode</h3>
+        <p>Live Online (Zoom)<br/>+ Recordings Available</p>
+      </div>
+      <div class="struct-card">
+        <i class="fas fa-language"></i>
+        <h3>Language</h3>
+        <p>Simple Urdu / Hindi</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYLLABUS -->
+<section id="syllabus">
+  <div class="container">
+    <p class="section-label center"><span>Curriculum</span></p>
+    <h2 class="center">What You Will Study</h2>
+    <p class="section-desc center" style="margin-top:0.5rem">Seven core disciplines drawn from classical Islamic scholarship.</p>
+    <div class="syllabus-grid">
+      <div class="syllabus-card">
+        <div class="syl-icon"><i class="fas fa-star-and-crescent"></i></div>
+        <div>
+          <p class="syl-subject">Aqeedah</p>
+          <p class="syl-book">Usool ath-Thalathah &amp; Al-Aqeedah at-Tahawiyyah</p>
+        </div>
+      </div>
+      <div class="syllabus-card">
+        <div class="syl-icon"><i class="fas fa-hands-praying"></i></div>
+        <div>
+          <p class="syl-subject">Fiqh</p>
+          <p class="syl-book">Taharah &amp; Salah (Umdatul Ahkam)</p>
+        </div>
+      </div>
+      <div class="syllabus-card">
+        <div class="syl-icon"><i class="fas fa-scroll"></i></div>
+        <div>
+          <p class="syl-subject">Hadith</p>
+          <p class="syl-book">Kitab al-Jami (Bulugh al-Maram)</p>
+        </div>
+      </div>
+      <div class="syllabus-card">
+        <div class="syl-icon"><i class="fas fa-moon"></i></div>
+        <div>
+          <p class="syl-subject">Seerah</p>
+          <p class="syl-book">Al-Awjaz fi Seerah – Ibn Faris</p>
+        </div>
+      </div>
+      <div class="syllabus-card">
+        <div class="syl-icon"><i class="fas fa-book-quran"></i></div>
+        <div>
+          <p class="syl-subject">Tafsir</p>
+          <p class="syl-book">Mukhtasar Tafsir al-Baghawi (Fatiha → an-Naas)</p>
+        </div>
+      </div>
+      <div class="syllabus-card">
+        <div class="syl-icon"><i class="fas fa-pen-nib"></i></div>
+        <div>
+          <p class="syl-subject">Arabic</p>
+          <p class="syl-book">Hilyat Saniyyah (Ajrumiyyah)</p>
+        </div>
+      </div>
+      <div class="syllabus-card">
+        <div class="syl-icon"><i class="fas fa-user-graduate"></i></div>
+        <div>
+          <p class="syl-subject">Adab</p>
+          <p class="syl-book">Adab Talib-ul-Ilm</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTORS -->
+<section id="instructors">
+  <div class="container">
+    <p class="section-label center"><span>Faculty</span></p>
+    <h2 class="center">Your Instructors</h2>
+    <div class="instructor-grid">
+      <div class="instructor-card">
+        <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
+          <img src="https://drive.google.com/thumbnail?id=103612v1PIr394zNi1G6lLsfq2rMHkbjG&sz=w200" alt="Shaykh Abu Abdullah Sanabili" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
+        </div>
+        <p class="instructor-name">Shaykh Abu Abdullah Sanabili</p>
+        <p class="instructor-role">Initiative head, Program supervisor and Instructor</p>
+        <ul class="instructor-bio">
+          <li><i class="fas fa-circle"></i> Aalim Fazil — Jamia Islamia Sanabil, Delhi</li>
+          <li><i class="fas fa-circle"></i> BA Urdu, Osmania University</li>
+          <li><i class="fas fa-circle"></i> Imam &amp; Khateeb</li>
+          <li><i class="fas fa-circle"></i> 15+ Years Teaching Experience</li>
+        </ul>
+      </div>
+      <div class="instructor-card">
+        <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
+          <img src="https://drive.google.com/thumbnail?id=1M_2OTjB0gULy_-12pX3z6jDZD5lYp8la&sz=w200" alt="Abu Muʿawiyah al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
+        </div>
+        <p class="instructor-name">Abu Muʿawiyah al-Athari</p>
+        <p class="instructor-role">Assistant head, Coordinator and Instructor</p>
+        <ul class="instructor-bio">
+          <li><i class="fas fa-circle"></i> Ijazahs from 130+ Scholars Worldwide</li>
+          <li><i class="fas fa-circle"></i> Islamic Studies Instructor</li>
+          <li><i class="fas fa-circle"></i> Educational Advisory Member</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- With the help of -->
+    <div style="margin-top: 3.5rem;">
+      <p class="section-label center"><span>With the Help of</span></p>
+      <div class="instructor-grid" style="margin-top: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="instructor-card">
+          <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
+            <img src="https://drive.google.com/thumbnail?id=1KIn6JiOLo-OpphdabIMW40g4zMmt1mk2&sz=w200" alt="Shahzeb Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
+          </div>
+          <p class="instructor-name">Shahzeb Al-Athari</p>
+          <p class="instructor-role">Coordinator, Moderator &amp; Volunteer</p>
+          <ul class="instructor-bio">
+            <li><i class="fas fa-circle"></i> Course Coordination &amp; Student Support</li>
+            <li><i class="fas fa-circle"></i> Community Moderation</li>
+            <li><i class="fas fa-circle"></i> Volunteer Service</li>
+          </ul>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
+            <img src="https://drive.google.com/thumbnail?id=1BMNBY_eXl-xWuhyPZ_Vw4fGTiRjzCh_j&sz=w200" alt="Taha Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
+          </div>
+          <p class="instructor-name">Taha Al-Athari</p>
+          <p class="instructor-role">Coordinator, Moderator &amp; Volunteer</p>
+          <ul class="instructor-bio">
+            <li><i class="fas fa-circle"></i> Course Coordination &amp; Student Support</li>
+            <li><i class="fas fa-circle"></i> Community Moderation</li>
+            <li><i class="fas fa-circle"></i> Volunteer Service</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="cert">
+  <div class="container" style="text-align:center">
+    <p class="section-label center"><span>Certification</span></p>
+    <h2 class="center">Recognition Upon Completion</h2>
+    <div class="cert-box">
+      <i class="fas fa-certificate"></i>
+      <h3>Certificate of Completion</h3>
+      <p>Issued by <strong>Jamia Bushra Salafiyyah</strong> upon successful completion of the course.</p>
+      <div class="badge"><i class="fas fa-star"></i> &nbsp;Recommendation Letter for students scoring 80% or above</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEE & SEATS -->
+<section id="fee">
+  <div class="container" style="text-align:center">
+    <p class="section-label center"><span>Enrollment</span></p>
+    <h2 class="center">Fee &amp; Available Seats</h2>
+    <div class="fee-box">
+      <div class="fee-card highlight">
+        <i class="fas fa-tag"></i>
+        <div class="fee-amount">₹3000</div>
+        <div class="fee-label">FULL YEAR · ONE-TIME</div>
+        <br/>
+        <small style="color:var(--text-muted);font-size:0.82rem">Affordable &amp; accessible for all</small>
+      </div>
+      <div class="fee-card">
+        <i class="fas fa-users"></i>
+        <div class="seats-num">50</div>
+        <div class="fee-label">TOTAL SEATS</div>
+        <div class="limited-badge">⚠ LIMITED SEATS ONLY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATES -->
+<section id="dates">
+  <div class="container">
+    <p class="section-label center"><span>Important Dates</span></p>
+    <h2 class="center">Mark Your Calendar</h2>
+    <div class="dates-grid">
+      <div class="date-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>Course Begins</h3>
+        <p class="date-val">First Week of April 2026</p>
+      </div>
+      <div class="date-card" style="border-color:rgba(224,92,92,0.4);">
+        <i class="fas fa-hourglass-end" style="color:#e05c5c"></i>
+        <h3>Last Date to Register</h3>
+        <p class="date-val" style="color:#e05c5c">20 March 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <p class="section-label center"><span>Why Choose Us</span></p>
+    <h2 class="center">Why Talib-ul-Ilm?</h2>
+    <ul class="why-list">
+      <li><i class="fas fa-check-circle"></i> Strong foundations, not shortcuts</li>
+      <li><i class="fas fa-check-circle"></i> Authentic knowledge with clarity</li>
+      <li><i class="fas fa-check-circle"></i> Balance of knowledge, understanding &amp; adab</li>
+      <li><i class="fas fa-check-circle"></i> Clear pathway for future Islamic studies</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-alert">🔴 Learn Deen Seriously — Not Casually</div>
+    <h2 class="cta-title">Limited Seats. <span>Register Now.</span></h2>
+    <p class="cta-subtitle">Secure your place before 20 March 2026 — don't miss this opportunity.</p>
+    <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="margin: 0 auto;">
+      <i class="fab fa-whatsapp"></i> Register via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label center"><span>Get in Touch</span></p>
+    <h2 class="center">Contact &amp; Registration</h2>
+    <div class="contact-inner">
+      <div class="contact-btns">
+        <a href="https://wa.me/+918770591499" class="btn-contact btn-wa" target="_blank">
+          <i class="fab fa-whatsapp fa-lg"></i>
+          <span>
+            <strong>WhatsApp</strong><br/>
+            <small>Register or ask a question</small>
+          </span>
+        </a>
+        <a href="https://t.me/+xCp0-pbg4qUxNTI0" class="btn-contact btn-telegram" target="_blank">
+          <i class="fab fa-telegram fa-lg"></i>
+          <span>
+            <strong>Join on Telegram</strong><br/>
+            <small>Channel &amp; announcements</small>
+          </span>
+        </a>
+      </div>
+      <div class="qr-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://wa.me/+918770591499&color=2a3d2c&bgcolor=ffffff" alt="Scan to Register on WhatsApp" />
+        <p class="qr-label">SCAN TO REGISTER<br/>via WhatsApp</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">TALIB-UL-ILM</div>
+  <div class="footer-divider"></div>
+  <p class="footer-text">Madrassa Al-Athariyyah 2026</p>
+  <p class="footer-text" style="margin-top:0.5rem; font-style:italic; opacity:0.7; max-width:680px; margin-left:auto; margin-right:auto; line-height:1.8;">Mu'awiyah (May Allah be pleased with him) reported: The Messenger of Allah said, <span style="color:var(--gold);opacity:0.9;">"When Allah wishes good for someone, He bestows upon him the understanding of Deen."</span> [Al-Bukhari and Muslim]</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    con
