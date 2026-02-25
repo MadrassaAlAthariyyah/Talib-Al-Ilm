@@ -524,6 +524,97 @@
       }
       .about-icon { font-size: 2.5rem; }
     }
+    /* ── COUNTDOWN ── */
+    .countdown-wrapper {
+      margin: 0 auto 2.5rem;
+      text-align: center;
+      max-width: 560px;
+    }
+    .countdown-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .countdown-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .countdown-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: 1.1rem 1.4rem;
+      min-width: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .countdown-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top, rgba(201,168,76,0.06), transparent 70%);
+      pointer-events: none;
+    }
+    .countdown-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      min-width: 2ch;
+      text-align: center;
+      transition: transform 0.15s ease;
+    }
+    .countdown-num.tick {
+      transform: scale(1.12);
+    }
+    .countdown-unit {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .countdown-sep {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.4;
+      margin-bottom: 1.2rem;
+      align-self: center;
+    }
+    .countdown-deadline {
+      margin-top: 1.1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      font-family: 'Cinzel', serif;
+    }
+    .countdown-deadline.expired {
+      color: #e05c5c;
+      font-size: 0.88rem;
+    }
+    @media (max-width: 480px) {
+      .countdown-block { min-width: 68px; padding: 0.9rem 0.9rem; }
+      .countdown-num { font-size: 1.8rem; }
+      .countdown-sep { font-size: 1.4rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -558,6 +649,34 @@
   <p class="hero-subtitle">A One-Year Foundation Course in Authentic Islamic Knowledge</p>
   <div class="hero-divider"></div>
   <p class="hero-tagline">"Not just a course — an identity, a commitment, a journey toward being a true student of knowledge."</p>
+
+  <!-- COUNTDOWN TIMER -->
+  <div class="countdown-wrapper">
+    <p class="countdown-label">Registration closes in</p>
+    <div class="countdown-grid">
+      <div class="countdown-block">
+        <span class="countdown-num" id="h-cd-days">00</span>
+        <span class="countdown-unit">Days</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-block">
+        <span class="countdown-num" id="h-cd-hours">00</span>
+        <span class="countdown-unit">Hours</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-block">
+        <span class="countdown-num" id="h-cd-mins">00</span>
+        <span class="countdown-unit">Minutes</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-block">
+        <span class="countdown-num" id="h-cd-secs">00</span>
+        <span class="countdown-unit">Seconds</span>
+      </div>
+    </div>
+    <p class="countdown-deadline" id="h-cd-status">— 20 March 2026 —</p>
+  </div>
+
   <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank">
     <i class="fab fa-whatsapp"></i> Register Now
   </a>
@@ -828,6 +947,7 @@
     <div class="cta-alert">🔴 Learn Deen Seriously — Not Casually</div>
     <h2 class="cta-title">Limited Seats. <span>Register Now.</span></h2>
     <p class="cta-subtitle">Secure your place before 20 March 2026 — don't miss this opportunity.</p>
+
     <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="margin: 0 auto;">
       <i class="fab fa-whatsapp"></i> Register via WhatsApp
     </a>
@@ -899,4 +1019,57 @@
       }
     }
   });
+</script>
+
+<script>
+  (function() {
+    var target = new Date('2026-03-20T00:00:00').getTime();
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function tick(id, val) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var next = pad(val);
+      if (el.textContent !== next) {
+        el.classList.remove('tick');
+        void el.offsetWidth;
+        el.classList.add('tick');
+        el.textContent = next;
+        setTimeout(function(){ el.classList.remove('tick'); }, 150);
+      }
+    }
+
+    function update() {
+      var now  = Date.now();
+      var diff = target - now;
+      var status = document.getElementById('h-cd-status');
+
+      if (diff <= 0) {
+        tick('h-cd-days',  0);
+        tick('h-cd-hours', 0);
+        tick('h-cd-mins',  0);
+        tick('h-cd-secs',  0);
+        if (status) {
+          status.textContent = 'Registration has closed';
+          status.classList.add('expired');
+        }
+        return;
+      }
+
+      var days  = Math.floor(diff / 86400000);
+      var hours = Math.floor((diff % 86400000) / 3600000);
+      var mins  = Math.floor((diff % 3600000)  / 60000);
+      var secs  = Math.floor((diff % 60000)    / 1000);
+
+      tick('h-cd-days',  days);
+      tick('h-cd-hours', hours);
+      tick('h-cd-mins',  mins);
+      tick('h-cd-secs',  secs);
+
+      setTimeout(update, 1000);
+    }
+
+    update();
+  })();
 </script>
