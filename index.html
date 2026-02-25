@@ -72,7 +72,9 @@
       position: fixed; top: 56px; left: 0; width: 100%; z-index: 998;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+    .mobile-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
 
     /* ── HERO ── */
     header {
@@ -870,10 +872,31 @@
   <p class="footer-text" style="margin-top:0.5rem; font-style:italic; opacity:0.7; max-width:680px; margin-left:auto; margin-right:auto; line-height:1.8;">Mu'awiyah (May Allah be pleased with him) reported: The Messenger of Allah said, <span style="color:var(--gold);opacity:0.9;">"When Allah wishes good for someone, He bestows upon him the understanding of Deen."</span> [Al-Bukhari and Muslim]</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
+    var menu = document.getElementById('mobileMenu');
+    var icon = document.querySelector('.hamburger i');
+    menu.classList.toggle('open');
+    if (menu.classList.contains('open')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
   }
-  // Close mobile menu on outside click
+
+  // Close menu when clicking outside
   document.addEventListener('click', function(e) {
-    con
+    var menu = document.getElementById('mobileMenu');
+    var btn = document.querySelector('.hamburger');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+      var icon = btn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+  });
+</script>
