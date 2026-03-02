@@ -478,6 +478,12 @@
       color: #29a9e0;
     }
     .btn-telegram:hover { background: rgba(36,161,222,0.22); transform: translateX(4px); }
+    .btn-instagram {
+      background: rgba(193,53,132,0.12);
+      border-color: rgba(193,53,132,0.35);
+      color: #e1306c;
+    }
+    .btn-instagram:hover { background: rgba(193,53,132,0.22); transform: translateX(4px); }
     .qr-box {
       background: var(--card);
       border: 1px solid var(--border);
@@ -694,9 +700,14 @@
     <p class="countdown-deadline" id="h-cd-status">— 20 March 2026 —</p>
   </div>
 
-  <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank">
-    <i class="fab fa-whatsapp"></i> Register Now
-  </a>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:0.85rem; width:100%; max-width:400px;">
+    <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
+      <i class="fab fa-whatsapp"></i> Register Now — India &amp; International
+    </a>
+    <a href="https://wa.me/+923357696999" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
+      <i class="fab fa-whatsapp"></i> Register Now — Pakistan
+    </a>
+  </div>
 
   <span class="scroll-hint"><i class="fas fa-chevron-down"></i></span>
 </header>
@@ -788,7 +799,7 @@
         <div class="syl-icon"><i class="fas fa-book-quran"></i></div>
         <div>
           <p class="syl-subject">Tafsir</p>
-          <p class="syl-book">Tafsir as-Sa'di (Fatiha & Ad-Duha → An-Naas)</p>
+          <p class="syl-book">Tafsir as-Sa'di (Fatiha & Al-Asr → an-Naas)</p>
         </div>
       </div>
       <div class="syllabus-card">
@@ -851,10 +862,11 @@
             <img src="https://drive.google.com/thumbnail?id=1KIn6JiOLo-OpphdabIMW40g4zMmt1mk2&sz=w200" alt="Shahzeb Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
           </div>
           <p class="instructor-name">Shahzeb Al-Athari</p>
-          <p class="instructor-role">Manager &amp; Moderator </p>
+          <p class="instructor-role">Coordinator, Moderator &amp; Volunteer</p>
           <ul class="instructor-bio">
             <li><i class="fas fa-circle"></i> Course Coordination &amp; Student Support</li>
-            <li><i class="fas fa-circle"></i> Class Moderation</li>
+            <li><i class="fas fa-circle"></i> Community Moderation</li>
+            <li><i class="fas fa-circle"></i> Program Volunteer</li>
           </ul>
         </div>
         <div class="instructor-card">
@@ -862,10 +874,11 @@
             <img src="https://drive.google.com/thumbnail?id=1BMNBY_eXl-xWuhyPZ_Vw4fGTiRjzCh_j&sz=w200" alt="Taha Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
           </div>
           <p class="instructor-name">Taha Al-Athari</p>
-          <p class="instructor-role">Coordinator &amp; Moderator </p>
+          <p class="instructor-role">Coordinator, Moderator &amp; Volunteer</p>
           <ul class="instructor-bio">
             <li><i class="fas fa-circle"></i> Course Coordination &amp; Student Support</li>
             <li><i class="fas fa-circle"></i> Community Moderation</li>
+            <li><i class="fas fa-circle"></i> Program Volunteer</li>
           </ul>
         </div>
       </div>
@@ -963,9 +976,14 @@
     <h2 class="cta-title">Limited Seats. <span>Register Now.</span></h2>
     <p class="cta-subtitle">Secure your place before 20 March 2026 — don't miss this opportunity.</p>
 
-    <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="margin: 0 auto;">
-      <i class="fab fa-whatsapp"></i> Register via WhatsApp
-    </a>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:0.85rem; width:100%; max-width:400px; margin: 0 auto;">
+      <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
+        <i class="fab fa-whatsapp"></i> Register via WhatsApp — India &amp; International
+      </a>
+      <a href="https://wa.me/+923357696999" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
+        <i class="fab fa-whatsapp"></i> Register via WhatsApp — Pakistan
+      </a>
+    </div>
   </div>
 </section>
 
@@ -979,8 +997,15 @@
         <a href="https://wa.me/+918770591499" class="btn-contact btn-wa" target="_blank">
           <i class="fab fa-whatsapp fa-lg"></i>
           <span>
-            <strong>WhatsApp</strong><br/>
-            <small>Register or ask a question</small>
+            <strong>WhatsApp — India &amp; International</strong><br/>
+            <small>Indian &amp; international registrations</small>
+          </span>
+        </a>
+        <a href="https://wa.me/+923357696999" class="btn-contact btn-wa" target="_blank">
+          <i class="fab fa-whatsapp fa-lg"></i>
+          <span>
+            <strong>WhatsApp — Pakistan</strong><br/>
+            <small>Pakistani registrations only</small>
           </span>
         </a>
         <a href="https://t.me/+xCp0-pbg4qUxNTI0" class="btn-contact btn-telegram" target="_blank">
@@ -988,6 +1013,13 @@
           <span>
             <strong>Join on Telegram</strong><br/>
             <small>Channel &amp; announcements</small>
+          </span>
+        </a>
+        <a href="https://www.instagram.com/taalib.al.ilm_/" class="btn-contact btn-instagram" target="_blank">
+          <i class="fab fa-instagram fa-lg"></i>
+          <span>
+            <strong>Follow on Instagram</strong><br/>
+            <small>@taalib.al.ilm_</small>
           </span>
         </a>
       </div>
