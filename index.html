@@ -638,6 +638,38 @@
       .countdown-deadline{ font-size: 0.68rem; }
     }
 
+    /* ── LANG TOGGLE ── */
+    .lang-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold);
+      padding: 0.35rem 0.85rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+      margin-left: 0.75rem;
+    }
+    .lang-btn:hover {
+      background: rgba(201,168,76,0.22);
+      box-shadow: 0 0 10px rgba(201,168,76,0.2);
+    }
+    /* Urdu mode: switch body to RTL */
+    body.ur { direction: rtl; }
+    body.ur .about-inner { border-left: none; border-right: 2px solid var(--gold); padding-left: 0; padding-right: 2.5rem; }
+    body.ur .section-label::before, body.ur .section-label::after { display: none; }
+    body.ur .nav-links { flex-direction: row-reverse; }
+    body.ur .instructor-bio li { flex-direction: row-reverse; text-align: right; }
+    body.ur .btn-contact { flex-direction: row-reverse; text-align: right; }
+    body.ur .why-list li { flex-direction: row-reverse; }
+    body.ur .syllabus-card { flex-direction: row-reverse; text-align: right; }
+    body.ur .syl-subject, body.ur .syl-book { text-align: right; }
+    body.ur .countdown-label, body.ur .countdown-deadline { font-family: 'Noto Nastaliq Urdu', serif; font-size: 1rem; }
+    body.ur .nav-brand { font-family: 'Noto Nastaliq Urdu', serif; font-size: 1rem; letter-spacing: 0; }
+
   </style>
 </head>
 <body>
@@ -646,20 +678,21 @@
 <nav>
   <a class="nav-brand" href="#">TALIB-AL-'ILM</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#syllabus">Syllabus</a></li>
-    <li><a href="#instructors">Instructors</a></li>
-    <li><a href="#fee">Fee</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-en="About" data-ur="تعارف">About</a></li>
+    <li><a href="#syllabus" data-en="Syllabus" data-ur="نصاب">Syllabus</a></li>
+    <li><a href="#instructors" data-en="Instructors" data-ur="اساتذہ">Instructors</a></li>
+    <li><a href="#fee" data-en="Fee" data-ur="فیس">Fee</a></li>
+    <li><a href="#contact" data-en="Contact" data-ur="رابطہ">Contact</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  <button class="lang-btn" id="langBtn" onclick="toggleLang()">اردو</button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#syllabus" onclick="toggleMenu()">Syllabus</a>
-  <a href="#instructors" onclick="toggleMenu()">Instructors</a>
-  <a href="#fee" onclick="toggleMenu()">Fee &amp; Seats</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#about" onclick="toggleMenu()" data-en="About" data-ur="تعارف">About</a>
+  <a href="#syllabus" onclick="toggleMenu()" data-en="Syllabus" data-ur="نصاب">Syllabus</a>
+  <a href="#instructors" onclick="toggleMenu()" data-en="Instructors" data-ur="اساتذہ">Instructors</a>
+  <a href="#fee" onclick="toggleMenu()" data-en="Fee &amp; Seats" data-ur="فیس اور نشستیں">Fee &amp; Seats</a>
+  <a href="#contact" onclick="toggleMenu()" data-en="Contact" data-ur="رابطہ">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -667,45 +700,45 @@
   <div class="hero-bg"></div>
   <div class="hero-pattern"></div>
 
-  <p class="arabic-header">طَالِبُ الْعِلْم</p>
-  <h1 class="hero-title">TALIB-Al-'ILM</h1>
-  <p class="hero-subtitle">A One-Year Foundation Course in Authentic Islamic Knowledge</p>
+  <p class="arabic-header" id="arabicHeader">طَالِبُ الْعِلْم</p>
+  <h1 class="hero-title" data-en="TALIB-Al-'ILM" data-ur="طَالِبُ الْعِلْم">TALIB-Al-'ILM</h1>
+  <p class="hero-subtitle" data-en="A One-Year Foundation Course in Authentic Islamic Knowledge" data-ur="صحیح اسلامی علم کے حصول کے لیے ایک سالہ فاؤنڈیشن کورس">A One-Year Foundation Course in Authentic Islamic Knowledge</p>
   <div class="hero-divider"></div>
-  <p class="hero-tagline">"Not just a course — an identity, a commitment, a journey toward being a true student of knowledge."</p>
+  <p class="hero-tagline" data-en='"Not just a course — an identity, a commitment, a journey toward being a true student of knowledge."' data-ur='"یہ محض ایک کورس نہیں ہے — یہ ایک پہچان ہے، ایک عہد ہے، اور علم کے حقیقی طالب بننے کی طرف ایک سفر ہے۔"'>"Not just a course — an identity, a commitment, a journey toward being a true student of knowledge."</p>
 
   <!-- COUNTDOWN TIMER -->
   <div class="countdown-wrapper">
-    <p class="countdown-label">Registration closes in</p>
+    <p class="countdown-label" data-en="Registration closes in" data-ur="رجسٹریشن ختم ہونے میں باقی وقت">Registration closes in</p>
     <div class="countdown-grid">
       <div class="countdown-block">
         <span class="countdown-num" id="h-cd-days">00</span>
-        <span class="countdown-unit">Days</span>
+        <span class="countdown-unit" data-en="Days" data-ur="دن">Days</span>
       </div>
       <div class="countdown-sep">:</div>
       <div class="countdown-block">
         <span class="countdown-num" id="h-cd-hours">00</span>
-        <span class="countdown-unit">Hours</span>
+        <span class="countdown-unit" data-en="Hours" data-ur="گھنٹے">Hours</span>
       </div>
       <div class="countdown-sep">:</div>
       <div class="countdown-block">
         <span class="countdown-num" id="h-cd-mins">00</span>
-        <span class="countdown-unit">Minutes</span>
+        <span class="countdown-unit" data-en="Minutes" data-ur="منٹ">Minutes</span>
       </div>
       <div class="countdown-sep">:</div>
       <div class="countdown-block">
         <span class="countdown-num" id="h-cd-secs">00</span>
-        <span class="countdown-unit">Seconds</span>
+        <span class="countdown-unit" data-en="Seconds" data-ur="سیکنڈ">Seconds</span>
       </div>
     </div>
-    <p class="countdown-deadline" id="h-cd-status">— 20 March 2026 —</p>
+    <p class="countdown-deadline" id="h-cd-status" data-en="— 20 March 2026 —" data-ur="— 20 مارچ 2026 —">— 20 March 2026 —</p>
   </div>
 
   <div style="display:flex; flex-direction:column; align-items:center; gap:0.85rem; width:100%; max-width:400px;">
-    <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
-      <i class="fab fa-whatsapp"></i> Register Now — India &amp; International
+    <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="width:100%; justify-content:center;" data-en="Register Now — India &amp; International" data-ur="ابھی رجسٹر کریں — انڈیا اور انٹرنیشنل">
+      <i class="fab fa-whatsapp"></i> <span data-en="Register Now — India &amp; International" data-ur="ابھی رجسٹر کریں — انڈیا اور انٹرنیشنل">Register Now — India &amp; International</span>
     </a>
     <a href="https://wa.me/+923357696999" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
-      <i class="fab fa-whatsapp"></i> Register Now — Pakistan
+      <i class="fab fa-whatsapp"></i> <span data-en="Register Now — Pakistan" data-ur="ابھی رجسٹر کریں — پاکستان">Register Now — Pakistan</span>
     </a>
   </div>
 
@@ -715,16 +748,15 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <p class="section-label"><span>About the Course</span></p>
-    <h2>A Journey Built on Authentic Foundations</h2>
+    <p class="section-label"><span data-en="About the Course" data-ur="کورس کے بارے میں">About the Course</span></p>
+    <h2 data-en="A Journey Built on Authentic Foundations" data-ur="مستند بنیادوں پر مبنی ایک علمی سفر">A Journey Built on Authentic Foundations</h2>
     <br/>
     <div class="about-inner">
       <div class="about-icon">
         <i class="fas fa-book-open"></i>
       </div>
       <p class="about-text">
-        A <strong>structured and serious foundation program</strong> for those who want to build their Deen upon authentic sources and the <strong>Manhaj of the Salaf (Ahlul Hadith)</strong> — free from confusion and shortcuts.<br/><br/>
-        Open to <strong>students, professionals, homemakers</strong> — <em>all ages &amp; genders</em> are welcome. Whether you are beginning your journey or looking to solidify your foundations, this course is designed to bring you clarity, depth, and purpose.
+        <span data-en='A <strong>structured and serious foundation program</strong> for those who want to build their Deen upon authentic sources and the <strong>Manhaj of the Salaf (Ahlul Hadith)</strong> — free from confusion and shortcuts.<br/><br/>Open to <strong>students, professionals, homemakers</strong> — <em>all ages &amp; genders</em> are welcome. Whether you are beginning your journey or looking to solidify your foundations, this course is designed to bring you clarity, depth, and purpose.' data-ur='یہ ان لوگوں کے لیے ایک <strong>منظم اور سنجیدہ فاؤنڈیشن پروگرام</strong> ہے جو اپنے دین کی بنیاد مستند ذرائع اور <strong>منہج سلف (اہل حدیث)</strong> پر رکھنا چاہتے ہیں — الجھنوں اور شارٹ کٹس سے پاک۔<br/><br/>یہ کورس <strong>طلباء، پیشہ ور افراد، اور گھریلو خواتین</strong> — <em>تمام عمر اور تمام افراد</em> کے لیے کھلا ہے۔ چاہے آپ اپنے سفر کا آغاز کر رہے ہوں یا اپنی بنیادوں کو مضبوط کرنا چاہتے ہوں، یہ کورس آپ کو وضاحت، گہرائی اور مقصد فراہم کرنے کے لیے ڈیزائن کیا گیا ہے۔'>A <strong>structured and serious foundation program</strong> for those who want to build their Deen upon authentic sources and the <strong>Manhaj of the Salaf (Ahlul Hadith)</strong> — free from confusion and shortcuts.<br/><br/>Open to <strong>students, professionals, homemakers</strong> — <em>all ages &amp; genders</em> are welcome. Whether you are beginning your journey or looking to solidify your foundations, this course is designed to bring you clarity, depth, and purpose.</span>
       </p>
     </div>
   </div>
@@ -733,28 +765,28 @@
 <!-- STRUCTURE -->
 <section id="structure">
   <div class="container">
-    <p class="section-label center"><span>Course Structure</span></p>
-    <h2 class="center">How the Program Works</h2>
+    <p class="section-label center"><span data-en="Course Structure" data-ur="کورس کی ساخت">Course Structure</span></p>
+    <h2 class="center" data-en="How the Program Works" data-ur="پروگرام کیسے کام کرتا ہے">How the Program Works</h2>
     <div class="structure-grid">
       <div class="struct-card">
         <i class="fas fa-calendar-alt"></i>
-        <h3>Duration</h3>
-        <p>1 Full Year</p>
+        <h3 data-en="Duration" data-ur="دورانیہ">Duration</h3>
+        <p data-en="1 Full Year" data-ur="ایک مکمل سال">1 Full Year</p>
       </div>
       <div class="struct-card">
         <i class="fas fa-clock"></i>
-        <h3>Schedule</h3>
-        <p>4 Days/Week<br/>~1 Hour per Class</p>
+        <h3 data-en="Schedule" data-ur="شیڈول">Schedule</h3>
+        <p data-en="4 Days/Week<br/>~1 Hour per Class" data-ur="ہفتے میں 4 دن<br/>تقریباً 1 گھنٹہ فی کلاس">4 Days/Week<br/>~1 Hour per Class</p>
       </div>
       <div class="struct-card">
         <i class="fas fa-video"></i>
-        <h3>Mode</h3>
-        <p>Live Online (Zoom)<br/>+ Recordings Available</p>
+        <h3 data-en="Mode" data-ur="طریقہ کار">Mode</h3>
+        <p data-en="Live Online (Zoom)<br/>+ Recordings Available" data-ur="براہ راست آن لائن (زوم)<br/>+ ریکارڈنگز دستیاب">Live Online (Zoom)<br/>+ Recordings Available</p>
       </div>
       <div class="struct-card">
         <i class="fas fa-language"></i>
-        <h3>Language</h3>
-        <p>Simple Urdu / Hindi</p>
+        <h3 data-en="Language" data-ur="زبان">Language</h3>
+        <p data-en="Simple Urdu / Hindi" data-ur="سادہ اردو / ہندی">Simple Urdu / Hindi</p>
       </div>
     </div>
   </div>
@@ -763,57 +795,57 @@
 <!-- SYLLABUS -->
 <section id="syllabus">
   <div class="container">
-    <p class="section-label center"><span>Curriculum</span></p>
-    <h2 class="center">What You Will Study</h2>
-    <p class="section-desc center" style="margin-top:0.5rem">Seven core disciplines drawn from classical Islamic scholarship.</p>
+    <p class="section-label center"><span data-en="Curriculum" data-ur="نصاب">Curriculum</span></p>
+    <h2 class="center" data-en="What You Will Study" data-ur="آپ کیا پڑھیں گے">What You Will Study</h2>
+    <p class="section-desc center" style="margin-top:0.5rem" data-en="Seven core disciplines drawn from classical Islamic scholarship." data-ur="کلاسیکی اسلامی علوم سے ماخوذ سات بنیادی مضامین">Seven core disciplines drawn from classical Islamic scholarship.</p>
     <div class="syllabus-grid">
       <div class="syllabus-card">
         <div class="syl-icon"><i class="fas fa-star-and-crescent"></i></div>
         <div>
-          <p class="syl-subject">Aqeedah</p>
-          <p class="syl-book">Usool ath-Thalathah &amp; Al-Aqeedah at-Tahawiyyah</p>
+          <p class="syl-subject" data-en="Aqeedah" data-ur="عقیدہ">Aqeedah</p>
+          <p class="syl-book" data-en="Usool ath-Thalathah &amp; Al-Aqeedah at-Tahawiyyah" data-ur="اصول الثلثہ اور العقیدہ الطحاویہ">Usool ath-Thalathah &amp; Al-Aqeedah at-Tahawiyyah</p>
         </div>
       </div>
       <div class="syllabus-card">
         <div class="syl-icon"><i class="fas fa-hands-praying"></i></div>
         <div>
-          <p class="syl-subject">Fiqh</p>
-          <p class="syl-book">Taharah &amp; Salah (Umdatul Ahkam)</p>
+          <p class="syl-subject" data-en="Fiqh" data-ur="فقہ">Fiqh</p>
+          <p class="syl-book" data-en="Taharah &amp; Salah (Umdatul Ahkam)" data-ur="طہارت اور نماز (عمدۃ الاحکام)">Taharah &amp; Salah (Umdatul Ahkam)</p>
         </div>
       </div>
       <div class="syllabus-card">
         <div class="syl-icon"><i class="fas fa-scroll"></i></div>
         <div>
-          <p class="syl-subject">Hadith</p>
-          <p class="syl-book">Kitab al-Jami (Bulugh al-Maram)</p>
+          <p class="syl-subject" data-en="Hadith" data-ur="حدیث">Hadith</p>
+          <p class="syl-book" data-en="Kitab al-Jami (Bulugh al-Maram)" data-ur="کتاب الجامع (بلوغ المرام)">Kitab al-Jami (Bulugh al-Maram)</p>
         </div>
       </div>
       <div class="syllabus-card">
         <div class="syl-icon"><i class="fas fa-moon"></i></div>
         <div>
-          <p class="syl-subject">Seerah</p>
-          <p class="syl-book">Al-Awjaz fi Seerah – Ibn Faris</p>
+          <p class="syl-subject" data-en="Seerah" data-ur="سیرت">Seerah</p>
+          <p class="syl-book" data-en="Al-Awjaz fi Seerah – Ibn Faris" data-ur="الاوجز فی السیرۃ – ابن فارس">Al-Awjaz fi Seerah – Ibn Faris</p>
         </div>
       </div>
       <div class="syllabus-card">
         <div class="syl-icon"><i class="fas fa-book-quran"></i></div>
         <div>
-          <p class="syl-subject">Tafsir</p>
-          <p class="syl-book">Tafsir as-Sa'di (Fatiha & Ad-Duha → An-Naas)</p>
+          <p class="syl-subject" data-en="Tafsir" data-ur="تفسیر">Tafsir</p>
+          <p class="syl-book" data-en="Tafsir as-Sa'di (Fatiha &amp; Ad-Duha → An-Naas)" data-ur="تفسیر السعدی (سورہ فاتحہ اور سورہ ضحیٰ تا الناس)">Tafsir as-Sa'di (Fatiha &amp; Ad-Duha → An-Naas)</p>
         </div>
       </div>
       <div class="syllabus-card">
         <div class="syl-icon"><i class="fas fa-pen-nib"></i></div>
         <div>
-          <p class="syl-subject">Arabic</p>
-          <p class="syl-book">Hilyat Saniyyah (Ajrumiyyah)</p>
+          <p class="syl-subject" data-en="Arabic" data-ur="عربی">Arabic</p>
+          <p class="syl-book" data-en="Hilyat Saniyyah (Ajrumiyyah)" data-ur="حلیۃ سنیہ (آجرومیہ)">Hilyat Saniyyah (Ajrumiyyah)</p>
         </div>
       </div>
       <div class="syllabus-card">
         <div class="syl-icon"><i class="fas fa-user-graduate"></i></div>
         <div>
-          <p class="syl-subject">Adab</p>
-          <p class="syl-book">Adab Talib-Al-'Ilm</p>
+          <p class="syl-subject" data-en="Adab" data-ur="ادب">Adab</p>
+          <p class="syl-book" data-en="Adab Talib-Al-'Ilm" data-ur="ادبِ طالب العلم">Adab Talib-Al-'Ilm</p>
         </div>
       </div>
     </div>
@@ -823,15 +855,15 @@
 <!-- INSTRUCTORS -->
 <section id="instructors">
   <div class="container">
-    <p class="section-label center"><span>Faculty</span></p>
-    <h2 class="center">Our Team</h2>
+    <p class="section-label center"><span data-en="Faculty" data-ur="اساتذہ اور ٹیم">Faculty</span></p>
+    <h2 class="center" data-en="Our Team" data-ur="ہماری ٹیم">Our Team</h2>
     <div class="instructor-grid">
       <div class="instructor-card">
         <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
           <img src="https://drive.google.com/thumbnail?id=1or6dyg1Rj0KGPdud4GXXUU7taRl5hyom&sz=w200" alt="Shaykh Zafar Alam Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
         </div>
-        <p class="instructor-name">Shaykh Zafar Alam Al-Athari</p>
-        <p class="instructor-role">Team head, Program supervisor</p>
+        <p class="instructor-name" data-en="Shaykh Zafar Alam Al-Athari" data-ur="شیخ ظفر عالم الاثری">Shaykh Zafar Alam Al-Athari</p>
+        <p class="instructor-role" data-en="Team head, Program supervisor" data-ur="ٹیم ہیڈ اور پروگرام سپروائزر">Team head, Program supervisor</p>
         <ul class="instructor-bio">
           <li><i class="fas fa-circle"></i> Senior Scholar with 30+ years of experience in Dawah</li>
           <li><i class="fas fa-circle"></i> Former Daee at Dawah Center Riyadh &amp; Jaliyat</li>
@@ -845,8 +877,8 @@
         <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
           <img src="https://drive.google.com/thumbnail?id=103612v1PIr394zNi1G6lLsfq2rMHkbjG&sz=w200" alt="Shaykh Abu Abdullah Sanabili" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
         </div>
-        <p class="instructor-name">Shaykh Abu Abdullah Sanabili</p>
-        <p class="instructor-role">Assistant initiative head & supervisor, Course instructor</p>
+        <p class="instructor-name" data-en="Shaykh Abu Abdullah Sanabili" data-ur="شیخ ابو عبداللہ سنابلی">Shaykh Abu Abdullah Sanabili</p>
+        <p class="instructor-role" data-en="Assistant initiative head &amp; supervisor, Course instructor" data-ur="اسسٹنٹ ہیڈ اور نگران، کورس انسٹرکٹر">Assistant initiative head &amp; supervisor, Course instructor</p>
         <ul class="instructor-bio">
           <li><i class="fas fa-circle"></i> Founder of Jam'ia Bushra Salafiyyah </li>
           <li><i class="fas fa-circle"></i> Born on 3 November 1991 in a village near Nuh, Mewat (Haryana), into a religious Ahl-e-Hadith family; his father and grandfather both served as imams of the local mosque. </li>
@@ -860,8 +892,8 @@
         <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
           <img src="https://drive.google.com/thumbnail?id=1M_2OTjB0gULy_-12pX3z6jDZD5lYp8la&sz=w200" alt="Abu Muʿawiyah al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
         </div>
-        <p class="instructor-name">Abu Muʿawiyah al-Athari</p>
-        <p class="instructor-role">Initiative Head, coordinator & instructor</p>
+        <p class="instructor-name" data-en="Abu Muʿawiyah al-Athari" data-ur="ابو معاویہ الاثری">Abu Muʿawiyah al-Athari</p>
+        <p class="instructor-role" data-en="Initiative Head, coordinator &amp; instructor" data-ur="انیشیٹو ہیڈ، کوآرڈینیٹر اور انسٹرکٹر">Initiative Head, coordinator &amp; instructor</p>
         <ul class="instructor-bio">
           <li><i class="fas fa-circle"></i> Student of Islamic studies with a strong interest in Hadith and its sciences. </li>
           <li><i class="fas fa-circle"></i> Completed high school in science stream (CBSE), holds a bachelors degree in commerce and received tazkiyyah (authorization to teach) from over 10 senior scholars and the district Jamiat Ahl-e-Hadees. </li>
@@ -875,14 +907,14 @@
 
     <!-- With the help of -->
     <div style="margin-top: 3.5rem;">
-      <p class="section-label center"><span>With the Help of</span></p>
+      <p class="section-label center"><span data-en="With the Help of" data-ur="معاونین کی ٹیم">With the Help of</span></p>
       <div class="instructor-grid" style="margin-top: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
         <div class="instructor-card">
           <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
             <img src="https://drive.google.com/thumbnail?id=1KIn6JiOLo-OpphdabIMW40g4zMmt1mk2&sz=w200" alt="Shahzeb Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
           </div>
-          <p class="instructor-name">Shahzeb Al-Athari</p>
-          <p class="instructor-role">Manager &amp; Moderator</p>
+          <p class="instructor-name" data-en="Shahzeb Al-Athari" data-ur="شاہ زیب الاثری">Shahzeb Al-Athari</p>
+          <p class="instructor-role" data-en="Manager &amp; Moderator" data-ur="مینیجر اور ماڈریٹر">Manager &amp; Moderator</p>
           <ul class="instructor-bio">
             <li><i class="fas fa-circle"></i> Course Coordination &amp; Student Support</li>
             <li><i class="fas fa-circle"></i> Class Moderation</li>
@@ -892,8 +924,8 @@
           <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
             <img src="https://drive.google.com/thumbnail?id=1BMNBY_eXl-xWuhyPZ_Vw4fGTiRjzCh_j&sz=w200" alt="Taha Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
           </div>
-          <p class="instructor-name">Taha Al-Athari</p>
-          <p class="instructor-role">Coordinator &amp; Moderator</p>
+          <p class="instructor-name" data-en="Taha Al-Athari" data-ur="طہٰ الاثری">Taha Al-Athari</p>
+          <p class="instructor-role" data-en="Coordinator &amp; Moderator" data-ur="کوآرڈینیٹر اور ماڈریٹر">Coordinator &amp; Moderator</p>
           <ul class="instructor-bio">
             <li><i class="fas fa-circle"></i> Course Coordination &amp; Student Support</li>
             <li><i class="fas fa-circle"></i> Community Moderation</li>
@@ -903,8 +935,8 @@
           <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
             <img src="https://drive.google.com/thumbnail?id=1KxY3l_cAsx8Nvr41_M-uYSvtXQHRdnPw&sz=w200" alt="Ruman Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
           </div>
-          <p class="instructor-name">Ruman Al-Athari</p>
-          <p class="instructor-role">Social Media Manager &amp; Accounts</p>
+          <p class="instructor-name" data-en="Ruman Al-Athari" data-ur="رومان الاثری">Ruman Al-Athari</p>
+          <p class="instructor-role" data-en="Social Media Manager &amp; Accounts" data-ur="سوشل میڈیا مینیجر اور اکاؤنٹس">Social Media Manager &amp; Accounts</p>
           <ul class="instructor-bio">
             <li><i class="fas fa-circle"></i> Social Media Management</li>
             <li><i class="fas fa-circle"></i> Accounts &amp; Administration</li>
@@ -914,8 +946,8 @@
           <div class="instructor-avatar" style="background:none; padding:0; overflow:hidden;">
             <img src="https://drive.google.com/thumbnail?id=16yagqXLIti32qldxD8EG-mrFMHyp-T1E&sz=w200" alt="Haider Al-Athari" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-user\' style=\'font-size:1.5rem;color:#fff;margin:auto;\'></i>'"/>
           </div>
-          <p class="instructor-name">Haider Al-Athari</p>
-          <p class="instructor-role">Social Media Manager &amp; General Support</p>
+          <p class="instructor-name" data-en="Haider Al-Athari" data-ur="حیدر الاثری">Haider Al-Athari</p>
+          <p class="instructor-role" data-en="Social Media Manager &amp; General Support" data-ur="سوشل میڈیا مینیجر اور جنرل سپورٹ">Social Media Manager &amp; General Support</p>
           <ul class="instructor-bio">
             <li><i class="fas fa-circle"></i> Social Media Management</li>
             <li><i class="fas fa-circle"></i> General Support &amp; Outreach</li>
@@ -925,8 +957,8 @@
           <div class="instructor-avatar">
             <i class="fas fa-user"></i>
           </div>
-          <p class="instructor-name">Umm Muhammad Al-Athariyyah</p>
-          <p class="instructor-role">Admissions &amp; General Moderation (Female)</p>
+          <p class="instructor-name" data-en="Umm Muhammad Al-Athariyyah" data-ur="ام محمد الاثریہ">Umm Muhammad Al-Athariyyah</p>
+          <p class="instructor-role" data-en="Admissions &amp; General Moderation (Female)" data-ur="ایڈمیشن اور جنرل ماڈریشن (خواتین کا شعبہ)">Admissions &amp; General Moderation (Female)</p>
           <ul class="instructor-bio">
             <li><i class="fas fa-circle"></i> Student Admissions</li>
             <li><i class="fas fa-circle"></i> Female Section Moderation</li>
@@ -938,13 +970,13 @@
 </section>
 <section id="cert">
   <div class="container" style="text-align:center">
-    <p class="section-label center"><span>Certification</span></p>
-    <h2 class="center">Recognition Upon Completion</h2>
+    <p class="section-label center"><span data-en="Certification" data-ur="سرٹیفیکیشن">Certification</span></p>
+    <h2 class="center" data-en="Recognition Upon Completion" data-ur="کورس مکمل کرنے پر پہچان">Recognition Upon Completion</h2>
     <div class="cert-box">
       <i class="fas fa-certificate"></i>
-      <h3>Certificate of Completion</h3>
-      <p>Issued by <strong>Jamia Bushra Salafiyyah</strong> upon successful completion of the course.</p>
-      <div class="badge"><i class="fas fa-star"></i> &nbsp;Recommendation Letter for students scoring 80% or above</div>
+      <h3 data-en="Certificate of Completion" data-ur="سرٹیفکیٹ آف کمپلیشن">Certificate of Completion</h3>
+      <p><span data-en='Issued by <strong>Jamia Bushra Salafiyyah</strong> upon successful completion of the course.' data-ur='کورس کی کامیاب تکمیل پر <strong>جامعہ بشریٰ سلفیہ</strong> کی جانب سے سرٹیفکیٹ جاری کیا جائے گا۔'>Issued by <strong>Jamia Bushra Salafiyyah</strong> upon successful completion of the course.</span></p>
+      <div class="badge"><i class="fas fa-star"></i> &nbsp;<span data-en="Recommendation Letter for students scoring 80% or above" data-ur="80% یا اس سے زائد نمبر حاصل کرنے والے طلباء کے لیے توصیفی خط">Recommendation Letter for students scoring 80% or above</span></div>
     </div>
   </div>
 </section>
@@ -952,35 +984,35 @@
 <!-- FEE & SEATS -->
 <section id="fee">
   <div class="container" style="text-align:center">
-    <p class="section-label center"><span>Enrollment</span></p>
-    <h2 class="center">Fee &amp; Available Seats</h2>
+    <p class="section-label center"><span data-en="Enrollment" data-ur="داخلہ">Enrollment</span></p>
+    <h2 class="center" data-en="Fee &amp; Available Seats" data-ur="فیس اور دستیاب نشستیں">Fee &amp; Available Seats</h2>
     <div class="fee-box">
       <div class="fee-card highlight">
         <i class="fas fa-tag"></i>
         <div class="fee-amount">₹3000</div>
-        <div class="fee-label">INDIAN RUPEES · FOR THE WHOLE YEAR</div>
+        <div class="fee-label" data-en="INDIAN RUPEES · FOR THE WHOLE YEAR" data-ur="انڈین روپے · پورے سال کے لیے">INDIAN RUPEES · FOR THE WHOLE YEAR</div>
         <br/>
-        <small style="color:var(--text-muted);font-size:0.82rem">*Installment plan available</small>
+        <small style="color:var(--text-muted);font-size:0.82rem" data-en="*Installment plan available" data-ur="*قسطوں کی سہولت دستیاب ہے">*Installment plan available</small>
       </div>
       <div class="fee-card highlight">
         <i class="fas fa-tag"></i>
         <div class="fee-amount">$50</div>
-        <div class="fee-label">US DOLLARS · FOR THE WHOLE YEAR</div>
+        <div class="fee-label" data-en="US DOLLARS · FOR THE WHOLE YEAR" data-ur="امریکی ڈالر · پورے سال کے لیے">US DOLLARS · FOR THE WHOLE YEAR</div>
         <br/>
         <small style="color:var(--text-muted);font-size:0.82rem">&nbsp;</small>
       </div>
       <div class="fee-card highlight">
         <i class="fas fa-tag"></i>
         <div class="fee-amount">₨9000</div>
-        <div class="fee-label">PAKISTANI RUPEES · FOR THE WHOLE YEAR</div>
+        <div class="fee-label" data-en="PAKISTANI RUPEES · FOR THE WHOLE YEAR" data-ur="پاکستانی روپے · پورے سال کے لیے">PAKISTANI RUPEES · FOR THE WHOLE YEAR</div>
         <br/>
-        <small style="color:var(--text-muted);font-size:0.82rem">*Installment plan available</small>
+        <small style="color:var(--text-muted);font-size:0.82rem" data-en="*Installment plan available" data-ur="*قسطوں کی سہولت دستیاب ہے">*Installment plan available</small>
       </div>
       <div class="fee-card">
         <i class="fas fa-users"></i>
         <div class="seats-num">50</div>
-        <div class="fee-label">TOTAL SEATS</div>
-        <div class="limited-badge">⚠ LIMITED SEATS ONLY</div>
+        <div class="fee-label" data-en="TOTAL SEATS" data-ur="کل نشستیں">TOTAL SEATS</div>
+        <div class="limited-badge" data-en="⚠ LIMITED SEATS ONLY" data-ur="⚠ نشستیں محدود ہیں">⚠ LIMITED SEATS ONLY</div>
       </div>
     </div>
   </div>
@@ -989,18 +1021,18 @@
 <!-- DATES -->
 <section id="dates">
   <div class="container">
-    <p class="section-label center"><span>Important Dates</span></p>
-    <h2 class="center">Mark Your Calendar</h2>
+    <p class="section-label center"><span data-en="Important Dates" data-ur="اہم تواریخ">Important Dates</span></p>
+    <h2 class="center" data-en="Mark Your Calendar" data-ur="تاریخیں نوٹ کریں">Mark Your Calendar</h2>
     <div class="dates-grid">
       <div class="date-card">
         <i class="fas fa-calendar-check"></i>
-        <h3>Course Begins</h3>
-        <p class="date-val">First Week of April 2026</p>
+        <h3 data-en="Course Begins" data-ur="کورس کا آغاز">Course Begins</h3>
+        <p class="date-val" data-en="First Week of April 2026" data-ur="اپریل 2026 کا پہلا ہفتہ">First Week of April 2026</p>
       </div>
       <div class="date-card" style="border-color:rgba(224,92,92,0.4);">
         <i class="fas fa-hourglass-end" style="color:#e05c5c"></i>
-        <h3>Last Date to Register</h3>
-        <p class="date-val" style="color:#e05c5c">20 March 2026</p>
+        <h3 data-en="Last Date to Register" data-ur="رجسٹریشن کی آخری تاریخ">Last Date to Register</h3>
+        <p class="date-val" style="color:#e05c5c" data-en="20 March 2026" data-ur="20 مارچ 2026">20 March 2026</p>
       </div>
     </div>
   </div>
@@ -1009,13 +1041,13 @@
 <!-- WHY -->
 <section id="why">
   <div class="container">
-    <p class="section-label center"><span>Why Choose Us</span></p>
-    <h2 class="center">Why Talib-Al-'Ilm?</h2>
+    <p class="section-label center"><span data-en="Why Choose Us" data-ur="ہمیں کیوں منتخب کریں">Why Choose Us</span></p>
+    <h2 class="center" data-en="Why Talib-Al-'Ilm?" data-ur="طالب العلم کورس کیوں؟">Why Talib-Al-'Ilm?</h2>
     <ul class="why-list">
-      <li><i class="fas fa-check-circle"></i> Strong foundations, not shortcuts</li>
-      <li><i class="fas fa-check-circle"></i> Authentic knowledge with clarity</li>
-      <li><i class="fas fa-check-circle"></i> Balance of knowledge, understanding &amp; adab</li>
-      <li><i class="fas fa-check-circle"></i> Clear pathway for future Islamic studies</li>
+      <li><i class="fas fa-check-circle"></i> <span data-en="Strong foundations, not shortcuts" data-ur="شارٹ کٹس کے بجائے مضبوط بنیادیں">Strong foundations, not shortcuts</span></li>
+      <li><i class="fas fa-check-circle"></i> <span data-en="Authentic knowledge with clarity" data-ur="وضاحت کے ساتھ مستند علم">Authentic knowledge with clarity</span></li>
+      <li><i class="fas fa-check-circle"></i> <span data-en="Balance of knowledge, understanding &amp; adab" data-ur="علم، فہم اور ادب کا بہترین امتزاج">Balance of knowledge, understanding &amp; adab</span></li>
+      <li><i class="fas fa-check-circle"></i> <span data-en="Clear pathway for future Islamic studies" data-ur="مستقبل کے اعلیٰ اسلامی علوم کے لیے واضح راستہ">Clear pathway for future Islamic studies</span></li>
     </ul>
   </div>
 </section>
@@ -1023,16 +1055,16 @@
 <!-- CTA -->
 <section id="cta">
   <div class="container">
-    <div class="cta-alert">🔴 Learn Deen Seriously — Not Casually</div>
-    <h2 class="cta-title">Limited Seats. <span>Register Now.</span></h2>
-    <p class="cta-subtitle">Secure your place before 20 March 2026 — don't miss this opportunity.</p>
+    <div class="cta-alert" data-en="🔴 Learn Deen Seriously — Not Casually" data-ur="🔴 دین کو سنجیدگی سے سیکھیں — محض سرسری نہیں">🔴 Learn Deen Seriously — Not Casually</div>
+    <h2 class="cta-title"><span data-en="Limited Seats." data-ur="نشستیں محدود ہیں۔">Limited Seats.</span> <span data-en="Register Now." data-ur="ابھی رجسٹر کریں۔">Register Now.</span></h2>
+    <p class="cta-subtitle" data-en="Secure your place before 20 March 2026 — don't miss this opportunity." data-ur="20 مارچ 2026 سے پہلے اپنی جگہ محفوظ کریں — اس موقع کو ہاتھ سے نہ جانے دیں۔">Secure your place before 20 March 2026 — don't miss this opportunity.</p>
 
     <div style="display:flex; flex-direction:column; align-items:center; gap:0.85rem; width:100%; max-width:400px; margin: 0 auto;">
       <a href="https://wa.me/+918770591499" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
-        <i class="fab fa-whatsapp"></i> Register via WhatsApp — India &amp; International
+        <i class="fab fa-whatsapp"></i> <span data-en="Register via WhatsApp — India &amp; International" data-ur="واٹس ایپ کے ذریعے رجسٹریشن — انڈیا اور انٹرنیشنل">Register via WhatsApp — India &amp; International</span>
       </a>
       <a href="https://wa.me/+923357696999" class="btn-primary" target="_blank" style="width:100%; justify-content:center;">
-        <i class="fab fa-whatsapp"></i> Register via WhatsApp — Pakistan
+        <i class="fab fa-whatsapp"></i> <span data-en="Register via WhatsApp — Pakistan" data-ur="واٹس ایپ کے ذریعے رجسٹریشن — پاکستان">Register via WhatsApp — Pakistan</span>
       </a>
     </div>
   </div>
@@ -1041,42 +1073,42 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <p class="section-label center"><span>Get in Touch</span></p>
-    <h2 class="center">Contact &amp; Registration</h2>
+    <p class="section-label center"><span data-en="Get in Touch" data-ur="رابطہ کریں">Get in Touch</span></p>
+    <h2 class="center" data-en="Contact &amp; Registration" data-ur="رابطہ اور رجسٹریشن">Contact &amp; Registration</h2>
     <div class="contact-inner">
       <div class="contact-btns">
         <a href="https://wa.me/+918770591499" class="btn-contact btn-wa" target="_blank">
           <i class="fab fa-whatsapp fa-lg"></i>
           <span>
-            <strong>WhatsApp — India &amp; International</strong><br/>
-            <small>Indian &amp; international registrations</small>
+            <strong data-en="WhatsApp — India &amp; International" data-ur="واٹس ایپ — انڈیا اور انٹرنیشنل">WhatsApp — India &amp; International</strong><br/>
+            <small data-en="Indian &amp; international registrations" data-ur="انڈین اور انٹرنیشنل رجسٹریشن">Indian &amp; international registrations</small>
           </span>
         </a>
         <a href="https://wa.me/+923357696999" class="btn-contact btn-wa" target="_blank">
           <i class="fab fa-whatsapp fa-lg"></i>
           <span>
-            <strong>WhatsApp — Pakistan</strong><br/>
-            <small>Pakistani registrations only</small>
+            <strong data-en="WhatsApp — Pakistan" data-ur="واٹس ایپ — پاکستان">WhatsApp — Pakistan</strong><br/>
+            <small data-en="Pakistani registrations only" data-ur="صرف پاکستانی رجسٹریشن">Pakistani registrations only</small>
           </span>
         </a>
         <a href="https://t.me/+xCp0-pbg4qUxNTI0" class="btn-contact btn-telegram" target="_blank">
           <i class="fab fa-telegram fa-lg"></i>
           <span>
-            <strong>Join on Telegram</strong><br/>
-            <small>Channel &amp; announcements</small>
+            <strong data-en="Join on Telegram" data-ur="ٹیلی گرام جوائن کریں">Join on Telegram</strong><br/>
+            <small data-en="Channel &amp; announcements" data-ur="چینل اور اعلانات">Channel &amp; announcements</small>
           </span>
         </a>
         <a href="https://www.instagram.com/taalib.al.ilm_/" class="btn-contact btn-instagram" target="_blank">
           <i class="fab fa-instagram fa-lg"></i>
           <span>
-            <strong>Follow on Instagram</strong><br/>
+            <strong data-en="Follow on Instagram" data-ur="انسٹاگرام پر فالو کریں">Follow on Instagram</strong><br/>
             <small>@taalib.al.ilm_</small>
           </span>
         </a>
       </div>
       <div class="qr-box">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://wa.me/+918770591499&color=2a3d2c&bgcolor=ffffff" alt="Scan to Register on WhatsApp" />
-        <p class="qr-label">SCAN TO REGISTER<br/>via WhatsApp</p>
+        <p class="qr-label" data-en="SCAN TO REGISTER<br/>via WhatsApp" data-ur="رجسٹریشن کے لیے اسکین کریں<br/>واٹس ایپ">SCAN TO REGISTER<br/>via WhatsApp</p>
       </div>
     </div>
   </div>
@@ -1084,10 +1116,10 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-title">TALIB-Al-'ILM</div>
+  <div class="footer-title" data-en="TALIB-Al-'ILM" data-ur="طَالِبُ الْعِلْم">TALIB-Al-'ILM</div>
   <div class="footer-divider"></div>
-  <p class="footer-text">Madrassa Al-Athariyyah 2026</p>
-  <p class="footer-text" style="margin-top:0.5rem; font-style:italic; opacity:0.7; max-width:680px; margin-left:auto; margin-right:auto; line-height:1.8;">Mu'awiyah (May Allah be pleased with him) reported: The Messenger of Allah said, <span style="color:var(--gold);opacity:0.9;">"When Allah wishes good for someone, He bestows upon him the understanding of Deen."</span> [Al-Bukhari and Muslim]</p>
+  <p class="footer-text" data-en="Madrassa Al-Athariyyah 2026" data-ur="مدرسہ الاثریہ 2026">Madrassa Al-Athariyyah 2026</p>
+  <p class="footer-text" style="margin-top:0.5rem; font-style:italic; opacity:0.7; max-width:680px; margin-left:auto; margin-right:auto; line-height:1.8;" data-en='Mu&apos;awiyah (May Allah be pleased with him) reported: The Messenger of Allah said, <span style="color:var(--gold);opacity:0.9;">&quot;When Allah wishes good for someone, He bestows upon him the understanding of Deen.&quot;</span> [Al-Bukhari and Muslim]' data-ur='سیدنا معاویہ رضی اللہ عنہ سے روایت ہے: رسول اللہ ﷺ نے فرمایا، <span style="color:var(--gold);opacity:0.9;">"اللہ جس کے ساتھ بھلائی کا ارادہ کرتا ہے، اسے دین کی سمجھ بوجھ عطا فرما دیتا ہے۔"</span> (بخاری و مسلم)'>Mu'awiyah (May Allah be pleased with him) reported: The Messenger of Allah said, <span style="color:var(--gold);opacity:0.9;">"When Allah wishes good for someone, He bestows upon him the understanding of Deen."</span> [Al-Bukhari and Muslim]</p>
 </footer>
 
 <script>
@@ -1104,7 +1136,47 @@
     }
   }
 
-  // Close menu when clicking outside
+  // ── LANGUAGE TOGGLE ──
+  var currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'ur' : 'en';
+    var btn = document.getElementById('langBtn');
+    btn.textContent = currentLang === 'en' ? 'اردو' : 'English';
+
+    // Flip body direction
+    if (currentLang === 'ur') {
+      document.body.classList.add('ur');
+      document.documentElement.setAttribute('lang', 'ur');
+    } else {
+      document.body.classList.remove('ur');
+      document.documentElement.setAttribute('lang', 'en');
+    }
+
+    // Swap all [data-en] / [data-ur] elements
+    document.querySelectorAll('[data-en]').forEach(function(el) {
+      var text = currentLang === 'ur' ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      if (text !== null) {
+        // Use innerHTML so embedded tags (strong, em, span) render correctly
+        el.innerHTML = text;
+      }
+    });
+
+    // Show/hide arabic header
+    var arabicHeader = document.getElementById('arabicHeader');
+    if (arabicHeader) {
+      arabicHeader.style.display = currentLang === 'ur' ? 'none' : '';
+    }
+
+    // Urdu font for body text
+    if (currentLang === 'ur') {
+      document.body.style.fontFamily = "'Noto Nastaliq Urdu', serif";
+      document.body.style.fontSize = '1.05rem';
+    } else {
+      document.body.style.fontFamily = "'Lora', Georgia, serif";
+      document.body.style.fontSize = '';
+    }
+  }
   document.addEventListener('click', function(e) {
     var menu = document.getElementById('mobileMenu');
     var btn = document.querySelector('.hamburger');
